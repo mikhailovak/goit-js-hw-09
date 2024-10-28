@@ -1,3 +1,6 @@
+import SimpleLightbox from "simplelightbox";
+import "simplelightbox/dist/simple-lightbox.min.css";
+
 const images = [
   {
     preview:
@@ -83,16 +86,24 @@ function createMarkup(arr) {
 
 gallery.insertAdjacentHTML("beforeend", createMarkup(images))
 
-gallery.addEventListener("click", handleClick);
 
-function handleClick(event) {
-    event.preventDefault();
-    const currentImg = event.target;
+new SimpleLightbox('.gallery-item a', {
+    captionsData: 'alt', 
+    captionDelay: 250,    
+});
 
-    const instance = basicLightbox.create(`
-        <div class="modal">
-            <img src="${currentImg.dataset.source}" alt="${currentImg.alt}">
-        </div>
-    `);
-    instance.show();
-}
+// gallery.addEventListener("click", handleClick);
+
+// function handleClick(event) {
+//     event.preventDefault();
+//     const currentImg = event.target;
+
+//     const instance = basicLightbox.create(`
+//         <div class="modal">
+//             <img src="${currentImg.dataset.source}" alt="${currentImg.alt}">
+//         </div>
+//     `);
+//     instance.show();
+// }
+
+    
